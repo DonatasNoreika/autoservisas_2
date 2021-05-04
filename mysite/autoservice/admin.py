@@ -11,7 +11,8 @@ class OrderLineInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('owner_car', 'due_date')
+    list_display = ('owner_car', 'due_date', 'status')
+    list_editable = ('due_date', 'status')
     inlines = [OrderLineInline]
 
 

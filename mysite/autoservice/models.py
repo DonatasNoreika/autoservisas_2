@@ -56,7 +56,7 @@ class Order(models.Model):
         verbose_name_plural = 'Orders'
 
     STATUS = (
-        ('d', 'Draft'),
+        ('r', 'Draft'),
         ('i', 'In progress'),
         ('d', 'Done'),
         ('c', 'Canceled'),
@@ -66,7 +66,7 @@ class Order(models.Model):
         max_length=1,
         choices=STATUS,
         blank=True,
-        default='d',
+        default='r',
         help_text='Status',
     )
 
