@@ -4,8 +4,31 @@ from django.contrib import admin
 
 from .models import Service, Car, OwnerCar, Order, OrderLine
 
-admin.site.register(Service)
+
+class OrderLineInline(admin.TabularInline):
+    model = OrderLine
+    extra = 0  # išjungia placeholder'ius
+
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('owner_car', 'due_date')
+    inlines = [OrderLineInline]
+
+
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price')
+
+
+class CarAdmin(admin.ModelAdmin):
+    list_display = ('manufacturer', 'model', 'engine')
+
+
+class OwnerCarAdmin(admin.ModelAdmin):
+    list_display = ('year', 'owner', 'car', 'licence_plate', 'vin_code')
+    list_filter = ('owner', 'car')
+    search_fields = ('licence_plate', 'vin_code')
+
+admin.site.register(Service, ServiceAdmin)
 admin.site.register(Car)
-admin.site.register(OwnerCar)
-admin.site.register(Order)
-admin.site.register(OrderLine)
+admin.site.register(OwnerCar, OwnerCarAdmin)
+admin.site.register(Order, OrderAdmin)
