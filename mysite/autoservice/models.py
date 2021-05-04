@@ -79,3 +79,6 @@ class OrderLine(models.Model):
     class Meta:
         verbose_name = 'Order Line'
         verbose_name_plural = 'Order Lines'
+
+    def __str__(self):
+        return f"{self.order}: {self.service}, {self.qty}"
