@@ -30,6 +30,6 @@ class OwnerCarAdmin(admin.ModelAdmin):
     search_fields = ('licence_plate', 'vin_code')
 
 admin.site.register(Service, ServiceAdmin)
-admin.site.register(Car)
+admin.site.register(Car, CarAdmin)
 admin.site.register(OwnerCar, OwnerCarAdmin)
 admin.site.register(Order, OrderAdmin)
