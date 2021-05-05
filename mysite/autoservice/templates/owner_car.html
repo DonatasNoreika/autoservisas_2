@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container owner_car">
+    <h2>Automobilis: {{ owner_car.car }}</h2>
+    <hr/>
+    <p>Savininkas: {{ owner_car.owner }}</p>
+        <hr/>
+    <p>Metai: {{ owner_car.year }}</p>
+        <hr/>
+    <p>Valstybinis numeris: {{ owner_car.licence_plate }}</p>
+        <hr/>
+    <p>VIN kodas: {{ owner_car.vin_code }}</p>
+        <hr/>
+    </hr>
+    </br>
+    </div>
+{% endblock %}

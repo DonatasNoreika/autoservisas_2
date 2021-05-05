@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Service, Car, Order, OwnerCar
 
 
@@ -19,3 +19,7 @@ def info(request):
 
 def owner_cars(request):
     return render(request, 'owner_cars.html', {'cars': OwnerCar.objects.all()})
+
+def owner_car(request, owner_car_id):
+    single_owner_car = get_object_or_404(OwnerCar, pk=owner_car_id)
+    return render(request, 'owner_car.html', {'owner_car': single_owner_car})
