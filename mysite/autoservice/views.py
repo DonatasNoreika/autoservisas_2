@@ -29,3 +29,8 @@ def owner_car(request, owner_car_id):
 class OrderListView(generic.ListView):
     model = Order
     template_name = 'orders.html'
+
+
+class OrderDetailView(generic.DetailView):
+    model = Order
+    template_name = 'order.html'
