@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Service, Car, Order, OwnerCar
-
+from django.views import generic
 
 # Create your views here.
 
@@ -20,6 +20,12 @@ def info(request):
 def owner_cars(request):
     return render(request, 'owner_cars.html', {'cars': OwnerCar.objects.all()})
 
+
 def owner_car(request, owner_car_id):
     single_owner_car = get_object_or_404(OwnerCar, pk=owner_car_id)
     return render(request, 'owner_car.html', {'owner_car': single_owner_car})
+
+
+class OrderListView(generic.ListView):
+    model = Order
+    template_name = 'orders.html'
