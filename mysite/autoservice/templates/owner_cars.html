@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Automobiliai</h1>
+  <p>Mūsų aptarnaujamų automobilių sąrašas.</p>
+  {% for c in cars %}
+    <li><a href="">{{c.car}} {{c.owner}}</a></li>
+{% endfor %}
+{% endblock %}

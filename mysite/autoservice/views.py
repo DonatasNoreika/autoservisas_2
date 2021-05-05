@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Service, Car, Order
+from .models import Service, Car, Order, OwnerCar
+
 
 # Create your views here.
 
@@ -14,3 +15,7 @@ def info(request):
         'num_orders_done': num_orders_done,
     }
     return render(request, 'info.html', context=context)
+
+
+def owner_cars(request):
+    return render(request, 'owner_cars.html', {'cars': OwnerCar.objects.all()})
