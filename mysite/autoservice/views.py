@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Service, Car, Order, OwnerCar
 from django.views import generic
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -18,7 +19,10 @@ def info(request):
 
 
 def owner_cars(request):
-    return render(request, 'owner_cars.html', {'cars': OwnerCar.objects.all()})
+    paginator = Paginator(OwnerCar.objects.all(), 1)
+    page_number = request.GET.get('page')
+    paged_cars = paginator.get_page(page_number)
+    return render(request, 'owner_cars.html', {'cars': paged_cars})
 
 
 def owner_car(request, owner_car_id):
