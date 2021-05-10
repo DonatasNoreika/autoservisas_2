@@ -6,7 +6,7 @@ from django.views import generic
 
 def info(request):
     num_services = Service.objects.all().count()
-    num_cars = Car.objects.all().count()
+    num_cars = OwnerCar.objects.all().count()
     num_orders_done = Order.objects.filter(status__exact='d').count()
 
     context = {

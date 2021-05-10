@@ -8,4 +8,12 @@
     </hr>
     </br>
     </div>
+    <h4>Eilutės:</h4>
+    {% for line in order.lines.all %}
+      <hr>
+      <p>
+        {{ line.service }} - {{ line.qty }}
+      </p>
+    {% endfor %}
+
 {% endblock %}
