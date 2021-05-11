@@ -49,5 +49,5 @@ def search(request):
     didžiosios/mažosios.
     """
     query = request.GET.get('query')
-    search_results = OwnerCar.objects.filter(Q(licence_plate__icontains=query) | Q(vin_code__icontains=query))
+    search_results = OwnerCar.objects.filter(Q(licence_plate__icontains=query) | Q(vin_code__icontains=query) | Q(car__manufacturer__icontains=query)  | Q(car__model__icontains=query))
     return render(request, 'search.html', {'cars': search_results, 'query': query})
