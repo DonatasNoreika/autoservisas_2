@@ -11,10 +11,14 @@ def info(request):
     num_cars = OwnerCar.objects.all().count()
     num_orders_done = Order.objects.filter(status__exact='d').count()
 
+    num_visits = request.session.get('num_visits', 1)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         'num_services': num_services,
         'num_cars': num_cars,
         'num_orders_done': num_orders_done,
+        'num_visits': num_visits,
     }
     return render(request, 'info.html', context=context)
 
