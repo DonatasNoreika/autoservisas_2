@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load static %}
     <div class="container owner_car">
+      {% if owner_car.photo %}
+            <img src="{{ owner_car.photo.url }}" class="card-img-top" alt="...">
+      {% else %}
+            <img src="{% static 'img/no-image.png' %}" class="card-img-top">
+      {% endif %}
     <h2>Automobilis: {{ owner_car.car }}</h2>
     <hr/>
     <p>Savininkas: {{ owner_car.owner }}</p>
