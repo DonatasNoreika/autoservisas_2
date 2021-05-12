@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from tinymce.models import HTMLField
+
 import pytz
 utc=pytz.UTC
 
@@ -38,7 +40,7 @@ class OwnerCar(models.Model):
     licence_plate = models.CharField('Licence plate', max_length=200)
     vin_code = models.CharField('VIN code', max_length=200)
     photo = models.ImageField('Photo', upload_to='cars', null=True)
-
+    description = HTMLField("Description", null=True)
 
     def __str__(self):
         return f"{self.owner}: {self.car}, {self.licence_plate}, {self.vin_code}"

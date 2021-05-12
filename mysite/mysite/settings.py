@@ -40,6 +40,7 @@ EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
 
 INSTALLED_APPS = [
     'autoservice',
+    'tinymce',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
