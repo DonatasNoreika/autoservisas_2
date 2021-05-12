@@ -95,3 +95,10 @@ class OrderLine(models.Model):
 
     def __str__(self):
         return f"{self.order}: {self.service}, {self.qty}"
+
+
+class OrderComment(models.Model):
+    order = models.ForeignKey('Order', on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    content = models.TextField('Comment', max_length=2000)

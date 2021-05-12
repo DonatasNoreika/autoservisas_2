@@ -15,5 +15,16 @@
         {{ line.service }} - {{ line.qty }}
       </p>
     {% endfor %}
+</br>
+  <h4>Komentarai:</h4>
+  {% if order.ordercomment_set.all %}
+    {% for commment in order.ordercomment_set.all %}
+      <hr>
+      <strong>{{ commment.user }}</strong>, <em>{{ commment.date_created}}</em>
+      <p>{{ commment.content }}</p>
+    {% endfor %}
+  {% else %}
+    <p>Nėra komentarų</p>
+  {% endif %}
 
 {% endblock %}
