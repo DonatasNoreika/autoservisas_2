@@ -54,6 +54,13 @@ class Order(models.Model):
     owner_car = models.ForeignKey('OwnerCar', verbose_name="Model", on_delete=models.SET_NULL, null=True)
     due_date = models.DateTimeField('Due Date', null=True, blank=True)
 
+    @property
+    def final(self):
+        total = 0
+        lines = OrderLine.objects.filter(order=self.id)
+        for line in lines:
+            total += line.service.price * line.qty
+        return total
 
     def __str__(self):
         return f"{self.owner_car}: {self.owner_car.owner}, {self.due_date}"

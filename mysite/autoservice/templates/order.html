@@ -15,6 +15,8 @@
     {{ line.service }} ({{ line.service.price }}) - {{ line.qty }}: {{ line.total}}
 </p>
 {% endfor %}
+<h2>Suma: {{ order.final }}</h2>
+final
 
 {% if user.is_authenticated %}
 <div class="fieldWrapper">
