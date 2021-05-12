@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date
+from datetime import datetime
+import pytz
+utc=pytz.UTC
 
 # Create your models here.
 
@@ -56,7 +58,7 @@ class Order(models.Model):
 
     @property
     def is_overdue(self):
-        if self.due_back and date.today() > self.due_back:
+        if self.due_date and datetime.today().replace(tzinfo=utc) > self.due_date.replace(tzinfo=utc):
             return True
         return False
 
