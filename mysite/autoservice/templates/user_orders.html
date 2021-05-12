@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Mano užsakymai</h1>
+
+{% if order_list %}
+<ul>
+    {% for order in order_list %}
+    <li>
+        <a href="{{ order.id }}">{{ order.owner_car }}</a> ({{order.due_date}})
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Neturite užsakymų.</p>
+{% endif %}
+{% endblock %}

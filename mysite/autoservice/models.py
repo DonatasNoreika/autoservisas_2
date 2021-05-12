@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from datetime import date
 
 # Create your models here.
 
@@ -50,8 +50,15 @@ class Order(models.Model):
     owner_car = models.ForeignKey('OwnerCar', verbose_name="Model", on_delete=models.SET_NULL, null=True)
     due_date = models.DateTimeField('Due Date', null=True, blank=True)
 
+
     def __str__(self):
         return f"{self.owner_car}: {self.owner_car.owner}, {self.due_date}"
+
+    @property
+    def is_overdue(self):
+        if self.due_back and date.today() > self.due_back:
+            return True
+        return False
 
     class Meta:
         verbose_name = 'Order'
