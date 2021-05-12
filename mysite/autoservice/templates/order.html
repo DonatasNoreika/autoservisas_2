@@ -12,7 +12,7 @@
 {% for line in order.lines.all %}
 <hr>
 <p>
-    {{ line.service }} - {{ line.qty }}
+    {{ line.service }} ({{ line.service.price }}) - {{ line.qty }}: {{ line.total}}
 </p>
 {% endfor %}
 
