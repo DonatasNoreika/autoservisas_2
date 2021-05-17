@@ -3,18 +3,14 @@ from .models import Service, Car, Order, OwnerCar
 from django.views import generic
 from django.core.paginator import Paginator
 from django.db.models import Q
-
 from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
-
-# Importuojame FormMixin, kurį naudosime BookDetailView klasėje
 from django.views.generic.edit import FormMixin
+from .forms import OrderCommentForm, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.decorators import login_required
 
-from .forms import OrderCommentForm
-
-# Create your views here.
 
 def info(request):
     num_services = Service.objects.all().count()
@@ -62,9 +58,9 @@ class OrderDetailView(FormMixin, generic.DetailView):
 
     # įtraukiame formą į kontekstą, inicijuojame pradinę 'book' reikšmę.
     def get_context_data(self, *args, **kwargs):
-       context = super(OrderDetailView, self).get_context_data(**kwargs)
-       context['form'] = OrderCommentForm()
-       return context
+        context = super(OrderDetailView, self).get_context_data(**kwargs)
+        context['form'] = OrderCommentForm()
+        return context
 
     # standartinis post metodo perrašymas, naudojant FormMixin, galite kopijuoti tiesiai į savo projektą.
     def post(self, request, *args, **kwargs):
@@ -75,13 +71,13 @@ class OrderDetailView(FormMixin, generic.DetailView):
         else:
             return self.form_invalid(form)
 
-
     # štai čia nurodome, kad knyga bus būtent ta, po kuria komentuojame, o vartotojas bus tas, kuris yra prisijungęs.
     def form_valid(self, form):
         form.instance.order = self.object
         form.instance.user = self.request.user
         form.save()
         return super(OrderDetailView, self).form_valid(form)
+
 
 def search(request):
     """
@@ -91,7 +87,9 @@ def search(request):
     didžiosios/mažosios.
     """
     query = request.GET.get('query')
-    search_results = OwnerCar.objects.filter(Q(licence_plate__icontains=query) | Q(vin_code__icontains=query) | Q(car__manufacturer__icontains=query)  | Q(car__model__icontains=query))
+    search_results = OwnerCar.objects.filter(
+        Q(licence_plate__icontains=query) | Q(vin_code__icontains=query) | Q(car__manufacturer__icontains=query) | Q(
+            car__model__icontains=query))
     return render(request, 'search.html', {'cars': search_results, 'query': query})
 
 
@@ -130,3 +128,24 @@ def register(request):
             messages.error(request, 'Slaptažodžiai nesutampa!')
             return redirect('register')
     return render(request, 'register.html')
+
+
+@login_required
+def profile(request):
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f"Profilis atnaujintas")
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+    }
+    return render(request, 'profile.html', context)

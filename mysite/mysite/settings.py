@@ -39,8 +39,9 @@ EMAIL_HOST_PASSWORD = email_settings.EMAIL_HOST_PASSWORD
 # Application definition
 
 INSTALLED_APPS = [
-    'autoservice',
+    'autoservice.apps.AutoserviceConfig',
     'tinymce',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -141,3 +142,5 @@ MEDIA_URL = '/media/'
 # print(MEDIA_ROOT) - nevenkite padebuginti, bus lengviau nepasiklysti django filesystem džiunglėse
 
 LOGIN_REDIRECT_URL = '/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

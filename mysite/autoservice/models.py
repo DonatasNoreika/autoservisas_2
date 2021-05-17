@@ -2,9 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from tinymce.models import HTMLField
+from PIL import Image
 
 import pytz
-utc=pytz.UTC
+
+utc = pytz.UTC
+
 
 # Create your models here.
 
@@ -113,3 +116,19 @@ class OrderComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     content = models.TextField('Comment', max_length=2000)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    photo = models.ImageField(default="default.png", upload_to="profile_pics")
+
+    def __str__(self):
+        return f"{self.user.username} profile"
+
+    def save(self):
+        super().save()
+        img = Image.open(self.photo.path)
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.photo.path)

@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Service, Car, OwnerCar, Order, OrderLine, OrderComment
+from .models import Service, Car, OwnerCar, Order, OrderLine, OrderComment, Profile
 
 
 class OrderLineInline(admin.TabularInline):
@@ -38,3 +38,4 @@ admin.site.register(Car, CarAdmin)
 admin.site.register(OwnerCar, OwnerCarAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderComment, OrderCommentAdmin)
+admin.site.register(Profile)
