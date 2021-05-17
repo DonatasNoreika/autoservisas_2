@@ -1,18 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Užsakymų sąrašas</h1>
-  {% if order_list %}
-  <ul>
+<h1>Užsakymų sąrašas</h1>
+{% if order_list %}
+<div class="row">
     {% for order in order_list %}
-      <li>
-        <a href="{{ order.id }}">{{ order.owner_car }}</a> ({{order.due_date}})
-      </li>
+    <div class="col-md-4 d-flex align-items-stretch">
+        <div class="card mb-4 shadow-sm">
+            <img class="rounded-circle account-img" src="{{ order.owner_car.owner.profile.photo.url }}">
+            <div class="card-body">
+                <a href="{{ order.id }}">{{ order.owner_car }}</a> ({{order.due_date}})
+            </div>
+        </div>
+    </div>
     {% endfor %}
-  </ul>
-  {% else %}
-    <p>Užsakymų nėra.</p>
-  {% endif %}
+</div>
+{% else %}
+<p>Užsakymų nėra.</p>
+{% endif %}
 
 <div class="pagination">
     <span class="step-links">

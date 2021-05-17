@@ -43,7 +43,7 @@ def owner_car(request, owner_car_id):
 
 class OrderListView(generic.ListView):
     model = Order
-    paginate_by = 2
+    paginate_by = 6
     template_name = 'orders.html'
 
 
