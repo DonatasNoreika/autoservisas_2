@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 11:37+0300\n"
-"PO-Revision-Date: 2021-05-18 11:41+0300\n"
+"POT-Creation-Date: 2021-05-18 11:52+0300\n"
+"PO-Revision-Date: 2021-05-18 11:55+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -164,7 +164,7 @@ msgstr "Mano užsakymai"
 msgid "Logout"
 msgstr "Atsijungti"
 
-#: .\templates\base.html:73
+#: .\templates\base.html:73 .\templates\registration\login.html:27
 msgid "Login"
 msgstr "Prisijungti"
 
@@ -319,6 +319,62 @@ msgstr "Jei esate prisiregistravę anksčiau"
 #: .\templates\register.html:36
 msgid "Login."
 msgstr "Prisijunkite."
+
+#: .\templates\registration\logged_out.html:4
+msgid "You have successfully logged out!"
+msgstr "Sėkmingai atsijungėte!"
+
+#: .\templates\registration\logged_out.html:5
+msgid "Sign in again."
+msgstr "Prisijungti dar kartą."
+
+#: .\templates\registration\login.html:6
+msgid "Login error, please try again!"
+msgstr "Prisijungti nepavyko, bandykite dar kartą!"
+
+#: .\templates\registration\login.html:11
+msgid "You do not have access to this information. You must login."
+msgstr "Neturite teisių matyti šios informacijos. Prisijunkite."
+
+#: .\templates\registration\login.html:19
+msgid "Username:"
+msgstr "Vardas:"
+
+#: .\templates\registration\login.html:23
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+#: .\templates\registration\login.html:31
+msgid "Forgot your password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: .\templates\registration\password_reset_complete.html:4
+msgid "Password changed!"
+msgstr "Slaptažodis pakeistas!"
+
+#: .\templates\registration\password_reset_complete.html:5
+msgid "log in again"
+msgstr "prisijungti dar kartą"
+
+#: .\templates\registration\password_reset_confirm.html:5
+msgid "Enter a new password and repeat."
+msgstr "Įveskite naują slaptažodį ir pakartokite."
+
+#: .\templates\registration\password_reset_confirm.html:11
+msgid "New password:"
+msgstr "Naujas slaptažodis:"
+
+#: .\templates\registration\password_reset_confirm.html:16
+msgid "Confirm:"
+msgstr "Patvirtinti:"
+
+#: .\templates\registration\password_reset_confirm.html:21
+msgid "Change password"
+msgstr "Pakeisti slaptažodį"
+
+#: .\templates\registration\password_reset_done.html:4
+msgid "We've emailed you a link to change your password!"
+msgstr "Išsiuntėme jums el. laišką su slaptažodžio keitimo nuoroda!"
 
 #: .\templates\search.html:4
 msgid "Search"

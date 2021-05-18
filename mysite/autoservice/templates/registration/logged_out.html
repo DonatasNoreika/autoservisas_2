@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
-  <p>Sėkmingai atsijungėte!</p>
-  <a href="{% url 'login'%}">Prisijungti iš naujo.</a>
+  <p>{% trans "You have successfully logged out!" %}</p>
+  <a href="{% url 'login'%}">{% trans "Sign in again." %}</a>
 {% endblock %}
