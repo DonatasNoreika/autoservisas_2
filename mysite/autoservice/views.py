@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.views.generic.edit import FormMixin
 from .forms import OrderCommentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 def info(request):
     num_services = Service.objects.all().count()

@@ -33,6 +33,6 @@
             </div>
             <button type="submit" class="btn btn-primary register-button">{% trans "Register" %}</button>
         </form>
-        <p>J{% trans "If you have registered before" %}, <a href="/login"><strong>{% trans "Login." %}</strong></a></p>
+        <p>{% trans "If you have registered before" %}, <a href="{% url 'login' %}"><strong>{% trans "Login." %}</strong></a></p>
     </div>
 {% endblock %}
