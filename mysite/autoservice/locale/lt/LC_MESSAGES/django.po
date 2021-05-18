@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 11:52+0300\n"
-"PO-Revision-Date: 2021-05-18 11:55+0300\n"
+"POT-Creation-Date: 2021-05-18 12:05+0300\n"
+"PO-Revision-Date: 2021-05-18 12:07+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -391,3 +391,21 @@ msgstr "Oops. Nieko neradome :("
 #: .\templates\user_orders.html:15
 msgid "You have no orders."
 msgstr "Neturite užsakymų."
+
+#: .\views.py:116
+#, python-brace-format
+msgid "Username {username} already exists!"
+msgstr "Vardas  {username} užimtas!"
+
+#: .\views.py:121
+#, python-brace-format
+msgid "Email {email} already exists!"
+msgstr "El. pašto adresas  {email} panaudotas!"
+
+#: .\views.py:128
+msgid "Passwords do not match!"
+msgstr "Slaptažodžiai nesutampa!"
+
+#: .\views.py:141
+msgid "Profile updated"
+msgstr "Profilis atnaujintas"
