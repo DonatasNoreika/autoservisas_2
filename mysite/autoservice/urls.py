@@ -27,4 +27,5 @@ urlpatterns = [
     path('myorders/', views.UserOrderListView.as_view(), name='my_orders'),
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
