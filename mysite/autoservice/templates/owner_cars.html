@@ -1,9 +1,8 @@
 {% extends "base.html" %}
-
 {% block content %}
+{% load i18n %}
 {% load static %}
-  <h1>Automobiliai</h1>
-  <p>Mūsų aptarnaujamų automobilių sąrašas.</p>
+  <h1>{% trans "Vehicles:" %}</h1>
 
 <div class="row">
 {% for car in cars %}

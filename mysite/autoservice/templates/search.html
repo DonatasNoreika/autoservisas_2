@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
-  <h1>Paieškos pagal "{{query}}" rezultatai:</h1>
+  <h1>{% trans "Search" %} "{{query}}" {% trans "results:" %}</h1>
   </br>
   {% if cars %}
   <ul>
@@ -12,7 +12,7 @@
     {% endfor %}
   </ul>
   {% else %}
-    <p>Oops. Nieko neradome :(</p>
+    <p>{% trans "Oops. Nothing found :(" %}</p>
   {% endif %}
 
   {% endblock %}

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:49+0300\n"
-"PO-Revision-Date: 2021-05-18 10:49+0300\n"
+"POT-Creation-Date: 2021-05-18 11:37+0300\n"
+"PO-Revision-Date: 2021-05-18 11:41+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -30,7 +30,7 @@ msgstr "Kaina"
 
 #: .\models.py:22 .\models.py:99
 msgid "Service"
-msgstr "Paslauga:"
+msgstr "Paslauga"
 
 #: .\models.py:23
 msgid "Services"
@@ -144,6 +144,10 @@ msgstr "Komentaras"
 msgid "Comments"
 msgstr "Komentarai"
 
+#: .\templates\base.html:5 .\templates\base.html:22 .\templates\info.html:4
+msgid "Autoservice"
+msgstr "Autoservisas"
+
 #: .\templates\base.html:30
 msgid "Home"
 msgstr "Pradžia"
@@ -152,7 +156,7 @@ msgstr "Pradžia"
 msgid "Vehicles"
 msgstr "Automobiliai"
 
-#: .\templates\base.html:69
+#: .\templates\base.html:69 .\templates\user_orders.html:4
 msgid "My Orders"
 msgstr "Mano užsakymai"
 
@@ -164,13 +168,9 @@ msgstr "Atsijungti"
 msgid "Login"
 msgstr "Prisijungti"
 
-#: .\templates\base.html:75
+#: .\templates\base.html:75 .\templates\register.html:34
 msgid "Register"
 msgstr "Registruotis"
-
-#: .\templates\info.html:4
-msgid "Autoservice"
-msgstr "Autoservisas"
 
 #: .\templates\info.html:5
 msgid "Welcome to Autoservice!"
@@ -184,7 +184,7 @@ msgstr "Autoserviso statistika:"
 msgid "Services:"
 msgstr "Paslaugos:"
 
-#: .\templates\info.html:9
+#: .\templates\info.html:9 .\templates\owner_cars.html:5
 msgid "Vehicles:"
 msgstr "Automobiliai:"
 
@@ -195,3 +195,143 @@ msgstr "Atlikti užsakymai:"
 #: .\templates\info.html:11
 msgid "Your visits:"
 msgstr "Jūsų apsilankymai:"
+
+#: .\templates\order.html:5 .\templates\owner_car.html:11
+msgid "Vehicle:"
+msgstr "Automobilis:"
+
+#: .\templates\order.html:7
+msgid "Deadline:"
+msgstr "Laikotarpis:"
+
+#: .\templates\order.html:11
+msgid "Lines:"
+msgstr "Eilutės:"
+
+#: .\templates\order.html:18
+msgid "Total:"
+msgstr "Bendra suma:"
+
+#: .\templates\order.html:24
+msgid "Leave a comment:"
+msgstr "Palikite komentarą:"
+
+#: .\templates\order.html:28
+msgid "Publish"
+msgstr "Paskelbti"
+
+#: .\templates\order.html:33
+msgid "Comments:"
+msgstr "Komentarai:"
+
+#: .\templates\order.html:41
+msgid "No comments"
+msgstr "Nėra komentarų"
+
+#: .\templates\orders.html:4
+msgid "Orders list"
+msgstr "Užsakymų sąrašas"
+
+#: .\templates\orders.html:19
+msgid "No orders"
+msgstr "Nėra užsakymų"
+
+#: .\templates\orders.html:25
+msgid "first"
+msgstr "pirmas"
+
+#: .\templates\orders.html:26
+msgid "back"
+msgstr "atgal"
+
+#: .\templates\orders.html:34
+msgid "next"
+msgstr "pirmyn"
+
+#: .\templates\orders.html:35
+msgid "last"
+msgstr "paskutinis"
+
+#: .\templates\owner_car.html:13
+msgid "Owner:"
+msgstr "Savininkas:"
+
+#: .\templates\owner_car.html:15
+msgid "Year:"
+msgstr "Metai:"
+
+#: .\templates\owner_car.html:17
+msgid "Licence Plate:"
+msgstr "Valstybinis numeris:"
+
+#: .\templates\owner_car.html:19
+msgid "VIN code:"
+msgstr "VIN kodas:"
+
+#: .\templates\profile.html:16
+msgid "Profile info"
+msgstr "Profilio informacija"
+
+#: .\templates\profile.html:21
+msgid "Update"
+msgstr "Atnaujinti"
+
+#: .\templates\register.html:12
+msgid "Registration"
+msgstr "Registruotis"
+
+#: .\templates\register.html:16
+msgid "Username"
+msgstr "Vardas"
+
+#: .\templates\register.html:18
+msgid "Up to 150 characters."
+msgstr "Iki 150 simbolių."
+
+#: .\templates\register.html:21
+msgid "Email"
+msgstr "El. paštas"
+
+#: .\templates\register.html:23
+msgid ""
+"We will not share with anyone, we will not send any spam. Required to send a "
+"new password."
+msgstr ""
+"Nesidalinsime su niekuo ir nesiųsime reklamos. Reikalingas tik slaptažodžio "
+"atnaujinimui."
+
+#: .\templates\register.html:26
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: .\templates\register.html:28
+msgid "At least 8 characters. It cannot be just numbers."
+msgstr "Mažiausiai 8 simboliai. Negali būti tik skaičiai."
+
+#: .\templates\register.html:31
+msgid "Repeat Password"
+msgstr "Pakartoti slaptažodį"
+
+#: .\templates\register.html:36
+msgid "If you have registered before"
+msgstr "Jei esate prisiregistravę anksčiau"
+
+#: .\templates\register.html:36
+msgid "Login."
+msgstr "Prisijunkite."
+
+#: .\templates\search.html:4
+msgid "Search"
+msgstr "Ieškoti"
+
+#: .\templates\search.html:4
+msgid "results:"
+msgstr "rezultatai:"
+
+#: .\templates\search.html:15
+msgid "Oops. Nothing found :("
+msgstr "Oops. Nieko neradome :("
+
+#: .\templates\user_orders.html:15
+msgid "You have no orders."
+msgstr "Neturite užsakymų."

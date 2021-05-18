@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h1>Mano užsakymai</h1>
+{% load i18n %}
+<h1>{% trans "My Orders" %}</h1>
 
 {% if order_list %}
 <ul>
@@ -12,6 +12,6 @@
     {% endfor %}
 </ul>
 {% else %}
-<p>Neturite užsakymų.</p>
+<p>{% trans "You have no orders." %}</p>
 {% endif %}
 {% endblock %}

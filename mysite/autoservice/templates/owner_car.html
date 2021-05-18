@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 {% load static %}
     <div class="container owner_car">
@@ -8,15 +8,15 @@
       {% else %}
             <img src="{% static 'img/no-image.png' %}" class="card-img-top">
       {% endif %}
-    <h2>Automobilis: {{ owner_car.car }}</h2>
+    <h2>{% trans "Vehicle:" %} {{ owner_car.car }}</h2>
     <hr/>
-    <p>Savininkas: {{ owner_car.owner }}</p>
+    <p>{% trans "Owner:" %} {{ owner_car.owner }}</p>
         <hr/>
-    <p>Metai: {{ owner_car.year }}</p>
+    <p>{% trans "Year:" %} {{ owner_car.year }}</p>
         <hr/>
-    <p>Valstybinis numeris: {{ owner_car.licence_plate }}</p>
+    <p>{% trans "Licence Plate:" %} {{ owner_car.licence_plate }}</p>
         <hr/>
-    <p>VIN kodas: {{ owner_car.vin_code }}</p>
+    <p>{% trans "VIN code:" %} {{ owner_car.vin_code }}</p>
         <hr/>
     </hr>
     </br>

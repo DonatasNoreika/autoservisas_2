@@ -1,36 +1,36 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 <div class="container owner_car">
-    <h2>Automobilis: {{ order.owner_car }}</h2>
+    <h2>{% trans "Vehicle:" %}: {{ order.owner_car }}</h2>
     <hr/>
-    <p>Terminas: {{ order.due_date }}</p>
+    <p>{% trans "Deadline:" %} {{ order.due_date }}</p>
     </hr>
     </br>
 </div>
-<h4>Eilutės:</h4>
+<h4>{% trans "Lines:" %}</h4>
 {% for line in order.lines.all %}
 <hr>
 <p>
     {{ line.service }} ({{ line.service.price }}) - {{ line.qty }}: {{ line.total}}
 </p>
 {% endfor %}
-<h2>Suma: {{ order.final }}</h2>
+<h2>{% trans "Total:" %} {{ order.final }}</h2>
 
 {% if user.is_authenticated %}
 <div class="fieldWrapper">
     <hr>
     <br/>
-    <h4>Palikite Komentarą:</h4>
+    <h4>{% trans "Leave a comment:" %}</h4>
     <form action="" method="post">
         {% csrf_token %}
         {{ form.content }}</br>
-        <input type="submit" value="Išsaugoti">
+        <input type="submit" value="{% blocktrans %}Publish{% endblocktrans %}">
     </form>
 </div>
 {% endif %}
 </br>
-<h4>Komentarai:</h4>
+<h4>{% trans "Comments:" %}</h4>
 {% if order.ordercomment_set.all %}
 {% for commment in order.ordercomment_set.all %}
 <hr>
@@ -38,7 +38,7 @@
 <p>{{ commment.content }}</p>
 {% endfor %}
 {% else %}
-<p>Nėra komentarų</p>
+<p>{% trans "No comments" %}</p>
 {% endif %}
 
 {% endblock %}
