@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 10:31+0300\n"
-"PO-Revision-Date: 2021-05-18 10:32+0300\n"
+"POT-Creation-Date: 2021-05-18 10:49+0300\n"
+"PO-Revision-Date: 2021-05-18 10:49+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -20,6 +20,130 @@ msgstr ""
 "1 : n % 1 != 0 ? 2: 3);\n"
 "X-Generator: Poedit 2.3\n"
 
+#: .\models.py:15
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: .\models.py:16
+msgid "Price"
+msgstr "Kaina"
+
+#: .\models.py:22 .\models.py:99
+msgid "Service"
+msgstr "Paslauga:"
+
+#: .\models.py:23
+msgid "Services"
+msgstr "Paslaugos"
+
+#: .\models.py:27
+msgid "Manufacturer"
+msgstr "Gamintojas"
+
+#: .\models.py:28 .\models.py:42 .\models.py:57
+msgid "Model"
+msgstr "Modelis"
+
+#: .\models.py:29
+msgid "Engine"
+msgstr "Variklis"
+
+#: .\models.py:35
+msgid "Car"
+msgstr "Automobilis"
+
+#: .\models.py:36
+msgid "Cars"
+msgstr "Automobiliai"
+
+#: .\models.py:40
+msgid "Year"
+msgstr "Metai"
+
+#: .\models.py:41
+msgid "Owner"
+msgstr "Savininkas"
+
+#: .\models.py:43
+msgid "Licence plate"
+msgstr "Valstybinis numeris"
+
+#: .\models.py:44
+msgid "VIN code"
+msgstr "VIN kodas"
+
+#: .\models.py:45 .\models.py:127
+msgid "Photo"
+msgstr "Nuotrauka"
+
+#: .\models.py:46
+msgid "Description"
+msgstr "Aprašymas"
+
+#: .\models.py:52
+msgid "Owner Car"
+msgstr "Savininko automobilis"
+
+#: .\models.py:53
+msgid "Owners Cars"
+msgstr "Savininko automobiliai"
+
+#: .\models.py:58
+msgid "Due Date"
+msgstr "Terminas"
+
+#: .\models.py:78 .\models.py:98
+msgid "Order"
+msgstr "Užsakymas"
+
+#: .\models.py:79 .\templates\base.html:36
+msgid "Orders"
+msgstr "Užsakymai"
+
+#: .\models.py:82
+msgid "Draft"
+msgstr "Juodraštis"
+
+#: .\models.py:83
+msgid "In progress"
+msgstr "Vykdoma"
+
+#: .\models.py:84
+msgid "Done"
+msgstr "Atlikta"
+
+#: .\models.py:85
+msgid "Canceled"
+msgstr "Atšaukta"
+
+#: .\models.py:93
+msgid "Status"
+msgstr "Statusas"
+
+#: .\models.py:100
+msgid "Quantity"
+msgstr "Kiekis"
+
+#: .\models.py:107
+msgid "Order Line"
+msgstr "Užsakymo eilutė"
+
+#: .\models.py:108
+msgid "Order Lines"
+msgstr "Užsakymų eilutės"
+
+#: .\models.py:117
+msgid "Date"
+msgstr "Data"
+
+#: .\models.py:118 .\models.py:121
+msgid "Comment"
+msgstr "Komentaras"
+
+#: .\models.py:122
+msgid "Comments"
+msgstr "Komentarai"
+
 #: .\templates\base.html:30
 msgid "Home"
 msgstr "Pradžia"
@@ -28,15 +152,19 @@ msgstr "Pradžia"
 msgid "Vehicles"
 msgstr "Automobiliai"
 
-#: .\templates\base.html:36
-msgid "Orders"
-msgstr "Užsakymai"
-
 #: .\templates\base.html:69
 msgid "My Orders"
 msgstr "Mano užsakymai"
 
-#: .\templates\base.html:77
+#: .\templates\base.html:71
+msgid "Logout"
+msgstr "Atsijungti"
+
+#: .\templates\base.html:73
+msgid "Login"
+msgstr "Prisijungti"
+
+#: .\templates\base.html:75
 msgid "Register"
 msgstr "Registruotis"
 
@@ -67,9 +195,3 @@ msgstr "Atlikti užsakymai:"
 #: .\templates\info.html:11
 msgid "Your visits:"
 msgstr "Jūsų apsilankymai:"
-
-#~ msgid "Logout"
-#~ msgstr "Atsijungti"
-
-#~ msgid "Login"
-#~ msgstr "Prisijungti"
