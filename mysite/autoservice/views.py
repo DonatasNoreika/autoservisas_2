@@ -14,7 +14,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (ListView,
                                   DetailView,
                                   CreateView,
-                                  UpdateView)
+                                  UpdateView,
+                                  DeleteView)
 
 def info(request):
     num_services = Service.objects.all().count()
@@ -210,6 +211,16 @@ class UserOrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         form = super(UserOrderUpdateView, self).get_form(*args, **kwargs)
         form.fields['owner_car'].queryset = OwnerCar.objects.filter(owner=self.request.user)
         return form
+
+    def test_func(self):
+        order = self.get_object()
+        return self.request.user == order.owner_car.owner
+
+
+class UserOrderDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Order
+    success_url = "/autoservice/myorders/"
+    template_name = 'user_order_delete.html'
 
     def test_func(self):
         order = self.get_object()
