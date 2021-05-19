@@ -8,6 +8,12 @@
     </hr>
     </br>
 </div>
+{% if order.owner_car.owner == user %}
+<div>
+    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'my-order-update' order.id %}">Redaguoti</a>
+</div>
+{% endif %}
+
 <h4>{% trans "Lines:" %}</h4>
 {% for line in order.lines.all %}
 <hr>

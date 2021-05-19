@@ -10,10 +10,11 @@ from .forms import OrderCommentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 from django.views.generic.edit import FormMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (ListView,
                                   DetailView,
-                                  CreateView)
+                                  CreateView,
+                                  UpdateView)
 
 def info(request):
     num_services = Service.objects.all().count()
@@ -198,3 +199,18 @@ class UserOrderCreateView(LoginRequiredMixin, CreateView):
         form = super(UserOrderCreateView, self).get_form(*args, **kwargs)
         form.fields['owner_car'].queryset = OwnerCar.objects.filter(owner=self.request.user)
         return form
+
+
+class UserOrderUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Order
+    fields = ['owner_car', 'due_date']
+    template_name = 'user_order_form.html'
+
+    def get_form(self, *args, **kwargs):
+        form = super(UserOrderUpdateView, self).get_form(*args, **kwargs)
+        form.fields['owner_car'].queryset = OwnerCar.objects.filter(owner=self.request.user)
+        return form
+
+    def test_func(self):
+        order = self.get_object()
+        return self.request.user == order.owner_car.owner

@@ -30,4 +30,5 @@ urlpatterns = [
     path('myorders/', views.UserOrderListView.as_view(), name='my_orders'),
     path('myorders/<int:pk>', views.UserOrderDetailView.as_view(), name='my_order'),
     path('myorders/new', views.UserOrderCreateView.as_view(), name='my_order-new'),
+    path('myorders/<int:pk>/update', views.UserOrderUpdateView.as_view(), name='my-order-update'),
 ]
