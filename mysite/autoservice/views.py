@@ -1,16 +1,18 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from .models import Service, Car, Order, OwnerCar
-from django.views import generic
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import redirect
 from django.contrib.auth.forms import User
 from django.views.decorators.csrf import csrf_protect
 from django.contrib import messages
-from django.views.generic.edit import FormMixin
 from .forms import OrderCommentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
+from django.views.generic.edit import FormMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import (ListView,
+                                  DetailView)
 
 def info(request):
     num_services = Service.objects.all().count()
@@ -41,13 +43,13 @@ def owner_car(request, owner_car_id):
     return render(request, 'owner_car.html', {'owner_car': single_owner_car})
 
 
-class OrderListView(generic.ListView):
+class OrderListView(ListView):
     model = Order
     paginate_by = 6
     template_name = 'orders.html'
 
 
-class OrderDetailView(FormMixin, generic.DetailView):
+class OrderDetailView(FormMixin, DetailView):
     model = Order
     template_name = 'order.html'
     form_class = OrderCommentForm
@@ -92,13 +94,6 @@ def search(request):
             car__model__icontains=query))
     return render(request, 'search.html', {'cars': search_results, 'query': query})
 
-
-class UserOrderListView(generic.ListView):
-    model = Order
-    template_name = 'user_orders.html'
-
-    def get_queryset(self):
-        return Order.objects.filter(owner_car__owner=self.request.user)
 
 
 @csrf_protect
@@ -149,3 +144,45 @@ def profile(request):
         'p_form': p_form,
     }
     return render(request, 'profile.html', context)
+
+
+class UserOrderListView(LoginRequiredMixin, ListView):
+    model = Order
+    context_object_name = 'orders'
+    template_name = 'user_orders.html'
+
+    def get_queryset(self):
+        return Order.objects.filter(owner_car__owner=self.request.user)
+
+
+class UserOrderDetailView(LoginRequiredMixin, FormMixin, DetailView):
+    model = Order
+    context_object_name = 'order'
+    template_name = 'user_order.html'
+    form_class = OrderCommentForm
+
+    # nurodome, kur atsidursime komentaro sėkmės atveju.
+    def get_success_url(self):
+        return reverse('my_order', kwargs={'pk': self.object.id})
+
+    # įtraukiame formą į kontekstą, inicijuojame pradinę 'book' reikšmę.
+    def get_context_data(self, *args, **kwargs):
+        context = super(UserOrderDetailView, self).get_context_data(**kwargs)
+        context['form'] = OrderCommentForm()
+        return context
+
+    # standartinis post metodo perrašymas, naudojant FormMixin, galite kopijuoti tiesiai į savo projektą.
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    # štai čia nurodome, kad knyga bus būtent ta, po kuria komentuojame, o vartotojas bus tas, kuris yra prisijungęs.
+    def form_valid(self, form):
+        form.instance.order = self.object
+        form.instance.user = self.request.user
+        form.save()
+        return super(UserOrderDetailView, self).form_valid(form)

@@ -3,11 +3,15 @@
 {% load i18n %}
 <h1>{% trans "My Orders" %}</h1>
 
-{% if order_list %}
+{% if orders %}
 <ul>
-    {% for order in order_list %}
+    {% for order in orders %}
+    {% if order.owner_car.photo %}
+    <img class="rounded-circle" src="{{order.owner_car.photo.url}}">
+    {% endif %}
     <li class="{% if order.is_overdue %}text-danger{% endif %}">
-        <a href="{% url 'order' order.id %}">{{ order.owner_car }}</a> ({{order.due_date}})
+        <a>{{ order.owner_car }} ({{order.due_date}}) </a>
+        <a class="btn btn-primary" href="{{ order.pk }}" role="button">Peržiūrėti</a>
     </li>
     {% endfor %}
 </ul>
