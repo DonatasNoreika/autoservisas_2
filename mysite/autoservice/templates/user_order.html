@@ -2,6 +2,9 @@
 {% load i18n %}
 {% block content %}
 <div class="container owner_car">
+    {% if order.owner_car.photo %}
+    <div><img class="" src="{{order.owner_car.photo.url}}"></div>
+    {% endif %}
     <h2>{% trans "Vehicle:" %} {{ order.owner_car }}</h2>
     <hr/>
     <p>{% trans "Deadline:" %} {{ order.due_date }}</p>
