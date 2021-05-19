@@ -4,6 +4,7 @@ from datetime import datetime
 from tinymce.models import HTMLField
 from PIL import Image
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 import pytz
 utc = pytz.UTC
@@ -93,6 +94,9 @@ class Order(models.Model):
         help_text=_('Status'),
     )
 
+    def get_absolute_url(self):
+        """Nurodo konkretaus aprašymo galinį adresą"""
+        return reverse('my_order', args=[str(self.id)])
 
 class OrderLine(models.Model):
     order = models.ForeignKey('Order', verbose_name=_("Order"), on_delete=models.SET_NULL, null=True, related_name='lines')

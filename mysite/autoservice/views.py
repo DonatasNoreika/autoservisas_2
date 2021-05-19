@@ -12,7 +12,8 @@ from django.utils.translation import gettext as _
 from django.views.generic.edit import FormMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (ListView,
-                                  DetailView)
+                                  DetailView,
+                                  CreateView)
 
 def info(request):
     num_services = Service.objects.all().count()
@@ -186,3 +187,14 @@ class UserOrderDetailView(LoginRequiredMixin, FormMixin, DetailView):
         form.instance.user = self.request.user
         form.save()
         return super(UserOrderDetailView, self).form_valid(form)
+
+
+class UserOrderCreateView(LoginRequiredMixin, CreateView):
+    model = Order
+    fields = ['owner_car', 'due_date']
+    template_name = 'user_order_form.html'
+
+    def get_form(self, *args, **kwargs):
+        form = super(UserOrderCreateView, self).get_form(*args, **kwargs)
+        form.fields['owner_car'].queryset = OwnerCar.objects.filter(owner=self.request.user)
+        return form

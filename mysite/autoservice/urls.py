@@ -29,4 +29,5 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('myorders/', views.UserOrderListView.as_view(), name='my_orders'),
     path('myorders/<int:pk>', views.UserOrderDetailView.as_view(), name='my_order'),
+    path('myorders/new', views.UserOrderCreateView.as_view(), name='my_order-new'),
 ]
