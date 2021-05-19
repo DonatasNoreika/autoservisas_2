@@ -24,9 +24,9 @@ class Service(models.Model):
 
 
 class Car(models.Model):
-    manufacturer = models.CharField(_('Manufacturer'), max_length=200)
-    model = models.CharField(_('Model'), max_length=200)
-    engine = models.CharField(_('Engine'), max_length=200)
+    manufacturer = models.CharField(verbose_name=_('Manufacturer'), max_length=200)
+    model = models.CharField(verbose_name=_('Model'), max_length=200)
+    engine = models.CharField(verbose_name=_('Engine'), max_length=200)
 
     def __str__(self):
         return f"{self.manufacturer} {self.model}, {self.engine}"
@@ -40,10 +40,10 @@ class OwnerCar(models.Model):
     year = models.IntegerField(_('Year'), null=True)
     owner = models.ForeignKey(User, verbose_name=_("Owner"), on_delete=models.SET_NULL, null=True, blank=True)
     car = models.ForeignKey('Car', verbose_name=_("Model"), on_delete=models.SET_NULL, null=True)
-    licence_plate = models.CharField(_('Licence plate'), max_length=200)
-    vin_code = models.CharField(_('VIN code'), max_length=200)
-    photo = models.ImageField(_('Photo'), upload_to='cars', null=True)
-    description = HTMLField(_("Description"), null=True)
+    licence_plate = models.CharField(verbose_name=_('Licence plate'), max_length=200)
+    vin_code = models.CharField(verbose_name=_('VIN code'), max_length=200)
+    photo = models.ImageField(verbose_name=_('Photo'), upload_to='cars', null=True)
+    description = HTMLField(verbose_name=_("Description"), null=True)
 
     def __str__(self):
         return f"{self.owner}: {self.car}, {self.licence_plate}, {self.vin_code}"
